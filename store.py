@@ -9,10 +9,11 @@ import sys
 
 # takes arguments from the command line
 # should we get route information from the API? default False
-getRoutes = True if 'getRoutes' in sys.argv else False
+# getRoutes = True if 'getRoutes' in sys.argv else False
+getRoutes = False 
 # should existing data be truncated? default False;
-truncateData = True if 'truncateData' in sys.argv else False
-
+# truncateData = True if 'truncateData' in sys.argv else False
+truncateData = True 
 
 def time_loop():
 	"""timer function whose purpose is to call itself every N seconds 
@@ -42,5 +43,9 @@ if getRoutes:
 get_new_vehicles()
 
 # so wait a bit longer than usual to call the timer function 10secs later
-threading.Timer( 10, time_loop ).start()
+while True:
+    sleep(10)
+    get_new_vehicles()
+
+
 # then it calls itself every N secs
